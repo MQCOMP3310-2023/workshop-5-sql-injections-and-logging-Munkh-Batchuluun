@@ -127,7 +127,7 @@ public class SQLiteConnectionManager {
      */
     public void addValidWord(int id, String word) {
 
-        String sql = "INSERT INTO validWords(id,word) VALUES('" + id + "','" + word + "')";
+        String sql = "INSERT INTO validWords(id,word) VALUES('" + setInt(id) + "','" + setString(word) + "')";
 
         try (Connection conn = DriverManager.getConnection(databaseURL);
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -136,6 +136,8 @@ public class SQLiteConnectionManager {
             System.out.println(e.getMessage());
         }
 
+
+        
     }
 
     /**
