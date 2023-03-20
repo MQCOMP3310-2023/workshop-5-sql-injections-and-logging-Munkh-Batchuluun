@@ -140,7 +140,7 @@ public class SQLiteConnectionManager {
         }
            
         } else {
-            System.out.println("please enter valid word only lower case and 4 character");
+            System.out.println("Unacceptable input");
         }        
         
     }
