@@ -126,17 +126,16 @@ public class SQLiteConnectionManager {
      * @param word the word to store
      */
     public void addValidWord(int id, String word) {
-        int id_e = id;
-        String word_e = word;
 
-        String sql = "INSERT INTO validWords(id,word) VALUES( id=?, word=?)";
+        if(word.length() > 4 || word.matches("[A-Z]+")){
+            System.out.println("please enter valid word only lower case and 4 character");
+        } else {
+            String sql = "INSERT INTO validWords(id,word) VALUES('" + id + "','" + word + "')";
+        }        
         
         
         try (Connection conn = DriverManager.getConnection(databaseURL);
                 PreparedStatement pstmt = conn.prepareStatement(sql); 
-
-                pstmt.setInt(1, id_e);
-                pstmt.setString(2, word_e);
         ){
             pstmt.executeUpdate();
         } catch (SQLException e) {
