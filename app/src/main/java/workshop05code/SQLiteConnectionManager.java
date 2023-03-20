@@ -127,10 +127,8 @@ public class SQLiteConnectionManager {
      */
     public void addValidWord(int id, String word) {
 
-        String sql;
-
-        if(word.matches("[a-z]")){
-            sql = "INSERT INTO validWords(id,word) VALUES('" + id + "','" + word + "')";
+        if(word.matches("[a-z]+")){
+            String sql = "INSERT INTO validWords(id,word) VALUES('" + id + "','" + word + "')";
             try (Connection conn = DriverManager.getConnection(databaseURL);
                 PreparedStatement pstmt = conn.prepareStatement(sql); 
             ){
